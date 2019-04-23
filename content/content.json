@@ -1,0 +1,27 @@
+[
+  {
+    "id": "00000",
+    "text": "Tüm Araçlar",
+    "image": "something.png",
+    "selectable": false,
+    "state": {
+      "checked": true,
+      "expanded": false,
+      "selected": true
+    },
+    "nodes": [
+      {
+        "id": "00001",
+        "text": "BMW"
+      },
+      {
+        "id": "00002",
+        "text": "Mersedes"
+      },
+      {
+        "id": "00003",
+        "text": "Audi"
+      }
+    ]
+  }
+]
