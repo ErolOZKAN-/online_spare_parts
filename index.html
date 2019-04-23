@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bootstrap Tree View</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  	<script src="./js/bootstrap-treeview.js"></script>
+	<link href="./css/bootstrap-treeview.css" rel="stylesheet">
+  </head>
+  
+  <body>
+  	<div class="container">
+      <h1>Bootstrap Tree View - DOM Tree</h1>
+      <br/>
+      <div class="row">
+        <div class="col-sm-12">
+          <label for="treeview"></label>
+          <div id="treeview"/>
+        </div>
+      </div>
+    </div>
+		<button id ="asdasd"></button>
+
+  	<script>
+      function buildDomTree() {
+			var data = [{
+			  text: "Node 1",
+			  icon: "glyphicon glyphicon-stop",
+			  image: "something.png",
+			  selectedIcon: "glyphicon glyphicon-stop",
+			  color: "#000000",
+			  backColor: "#FFFFFF",
+			  iconColor: "#FFFFFF",
+			  selectable: true,
+			  checkable: true,
+			  state: {
+				checked: true,
+				expanded: false,
+				selected: true
+			  },
+			  tags: [
+				'available',
+				{text:'not available', class:'disabled'}
+			  ],
+
+			  class: 'special extraordinary',
+			  hideCheckbox: true,
+			  nodes: [
+				{  text: "Node 2"}, {  text: "Node 2"}, {  text: "Node 2"}
+			  ]
+			}];
+
+
+		console.log(data);
+        return data;
+      }
+
+  		$(function() {
+
+        var options = {
+          bootstrap2: false, 
+          showTags: true,
+          levels: 5,
+          data: buildDomTree(),
+		     multiSelect: $('#chk-select-multi').is(':checked'),
+            onNodeSelected: function(event, node) {
+			alert(node.text+ " selected");
+              $('#selectable-output').prepend('<p>' + node.text + ' was selected</p>');
+            },
+            onNodeUnselected: function (event, node) {
+              $('#selectable-output').prepend('<p>' + node.text + ' was unselected</p>');
+            }
+        };
+  			$('#treeview').treeview(options);
+  		});
+		$( "#asdasd" ).click(function() {
+		  alert( "Handler for .click() called." );
+		});
+
+  	</script>
+  </body>
