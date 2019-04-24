@@ -20,7 +20,22 @@
       },
       {
         "id": "00003",
-        "text": "Audi"
+        "text": "Audi",
+        "selectable": false,
+        "nodes": [
+          {
+            "id": "00001",
+            "text": "BMW"
+          },
+          {
+            "id": "00002",
+            "text": "Mersedes"
+          },
+          {
+            "id": "00003",
+            "text": "Audi"
+          }
+        ]
       }
     ]
   }
