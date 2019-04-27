@@ -1,10 +1,34 @@
 var cart_keys = [];
 var selected_node = null;
 
-function open_cart() {
+function send() {
+    var name = $("#contact-name").val();
+    var email_add = $("#contact-email").val();
+    var message = $("#contact-message").val();
+    console.log(name);
+    console.log(email_add);
+    console.log(message);
 
+}
+
+function send_email() {
+    console.log("sending_email");
+    $("#sepetim").modal('toggle');
+    $("#mail_modal").modal('toggle');
+}
+
+function clean_card() {
+    cart_keys = [];
+    $("#email_button").attr('disabled', 'true');
+    $('#added_to_chart_text').text("Sepetiniz temizlenmiştir.");
+    $('#added_to_chart').modal('show');
+    $("#sepetim").modal('toggle');
+}
+
+function open_cart() {
     $("#cart_items").empty();
-    var html = " <table id=\"data-table\" class=\"table table-striped table-bordered nowrap\" width=\"100%\">";
+    var html = '<div class="text-right" style="padding-bottom: 5px"><button class="btn btn-primary btn-sm" onclick="clean_card()">Temizle</button></div>';
+    html += "<table id=\"data-table\" class=\"table table-striped table-bordered nowrap\" width=\"100%\">";
     html += "<thead>";
     html += "<tr>";
     html += '<th>Araç</th>';
@@ -14,7 +38,6 @@ function open_cart() {
     html += "</thead>";
     html += "<tbody>";
     cart_keys.forEach(function (item) {
-        console.log(item);
         html += "<tr>";
         html += "<th>";
         html += item.selected_node.text;
@@ -30,38 +53,35 @@ function open_cart() {
     html += "</tbody>";
     html += "</table>";
 
-    $("#cart_items").append(html);
     if (cart_keys.length > 0) {
+        $("#cart_items").append(html);
         $("#email_button").removeAttr('disabled');
+    } else {
+        $("#cart_items").append("Sepetiniz boş");
     }
     $("#sepetim").modal('show');
 
 }
 
 function add_to_card() {
-    var keys = [];
-    var cart_table = $("#data-table tr");
     var selected_elements = $('#data-table').find('input[type="checkbox"]:checked');
-
     if (selected_elements.length == 0) {
         $('#added_to_chart_text').text("Lütfen parça seçiniz.");
         $('#added_to_chart').modal('show');
         return;
     }
-    console.log(selected_elements);
     selected_elements.each(function (key, value) {
-        keys.push(value.parents());
+        var part_id = value.closest('tr').children[1].innerHTML;
+        var part_desc = value.closest('tr').children[2].innerHTML;
+        cart_keys.push({
+            selected_node: selected_node,
+            part_id: part_id,
+            part_desc: part_desc
+        });
+
     });
-    console.log(keys);
-//     keys.forEach(function (key) {
-//         cart_keys.push({
-//             selected_node: selected_node,
-//             part_id: cart_table[key].children[1].innerHTML,
-//             part_desc: cart_table[key].children[2].innerHTML
-//         });
-//     });
-//     $('#added_to_chart_text').text(selected_elements.length + " parça sepetinize eklenmiştir. Lütfen sepetinizi kontrol ediniz.");
-//     $('#added_to_chart').modal('show');
+    $('#added_to_chart_text').text(selected_elements.length + " parça sepetinize eklenmiştir. Lütfen sepetinizi kontrol ediniz.");
+    $('#added_to_chart').modal('show');
 }
 
 function set_content(content) {
@@ -130,7 +150,6 @@ $(function () {
         multiSelect: $('#chk-select-multi').is(':checked'),
         onNodeSelected: function (event, node) {
             $("#pdf_div").empty();
-            console.log(node);
             var html = '<object data="pdfs/' + node.id + '.pdf" type="application/pdf" width="100%" height="300px"></object>';
             $("#pdf_div").append(html);
 

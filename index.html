@@ -65,7 +65,8 @@
                     <div id="cart_items"></div>
                 </div>
                 <div class="modal-footer">
-                    <button id="email_button" type="button" class="btn btn-primary btn-md" onclick="send_email()" disabled><i
+                    <button id="email_button" type="button" class="btn btn-primary btn-md" onclick="send_email()"
+                            disabled><i
                             class="fa fa-envelope"></i> İlet
                     </button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
@@ -88,6 +89,49 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="mail_modal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="contact-form" class="form-horizontal ajax" role="form" action="" method="post">
+                    <div class="modal-header">
+                        <h4>Mail<a class="close" data-dismiss="modal">x</a></h4>
+
+                    </div>
+                    <div id="form-alert" class="alert alert-success">Teşekkür ederiz. En kısa zamanda geri dönüş
+                        sağlayacağız.
+                    </div>
+                    <div class="modal-body" id="modal-body-id">
+                        <div class="form-group">
+                            <label for="contact-name" class="col-sm-2 control-label">İsim:</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="username" class="form-control" id="contact-name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email" class="col-sm-2 control-label">E-mail:</label>
+                            <div class="col-sm-10">
+                                <input type="email" name="email" class="form-control" id="contact-email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-message" class="col-sm-2 control-label">Mesaj:</label>
+                            <div class="col-sm-10">
+                                <textarea name="message" id="contact-message" class="form-control" rows="6"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" type="submit" onclick="send()"><i class="fa fa-envelope"></i>
+                            İlet
+                        </button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
