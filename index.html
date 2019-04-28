@@ -102,9 +102,7 @@
                         <h4>Mail<a class="close" data-dismiss="modal">x</a></h4>
 
                     </div>
-                    <div id="form-alert" class="alert alert-success">Teşekkür ederiz. En kısa zamanda geri dönüş
-                        sağlayacağız.
-                    </div>
+                    <center style="padding-top: 10px"><div id="form-alert" style="display: none"></div></center>
                     <div class="modal-body" id="modal-body-id">
                         <div class="form-group">
                             <label for="contact-name" class="col-sm-2 control-label">İsim:</label>
@@ -126,7 +124,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" type="submit" onclick="send()"><i class="fa fa-envelope"></i>
+                        <button type=button class="btn btn-primary" onclick="send()"><i class="fa fa-envelope"></i>
                             İlet
                         </button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>

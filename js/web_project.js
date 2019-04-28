@@ -5,10 +5,18 @@ function send() {
     var name = $("#contact-name").val();
     var email_add = $("#contact-email").val();
     var message = $("#contact-message").val();
-    console.log(name);
-    console.log(email_add);
-    console.log(message);
-
+    $('#form-alert').show();
+    $('#form-alert').text("Gönderiliyor..");
+    jQuery.ajax({
+        url: 'mail.php',
+        type: "POST",
+        data: {message: message, email: email_add, name: name, cart_keys: JSON.stringify(cart_keys)},
+        success: function (result) {
+            $("#mail_modal").modal('toggle');
+            $('#added_to_chart_text').text(result);
+            $('#added_to_chart').modal('show');
+        }
+    });
 }
 
 function send_email() {
@@ -32,8 +40,8 @@ function open_cart() {
     html += "<thead>";
     html += "<tr>";
     html += '<th>Araç</th>';
-    html += "<th>Part No:</th>";
-    html += "<th>Açıklama:</th>";
+    html += "<th>Parça Numarası</th>";
+    html += "<th>Açıklama</th>";
     html += "</tr>";
     html += "</thead>";
     html += "<tbody>";
@@ -90,8 +98,8 @@ function set_content(content) {
     html += "<thead>";
     html += "<tr>";
     html += '<th><input name="select_all" value="1" type="checkbox" disabled></th>';
-    html += "<th>Part No:</th>";
-    html += "<th>Açıklama:</th>";
+    html += "<th>Parça Numarası</th>";
+    html += "<th>Açıklama</th>";
     html += "</tr>";
     html += "</thead>";
     html += "<tbody>";

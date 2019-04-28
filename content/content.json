@@ -6,7 +6,7 @@
     "selectable": false,
     "state": {
       "checked": true,
-      "expanded": false,
+      "expanded": true,
       "selected": true
     },
     "nodes": [
