@@ -1,4 +1,4 @@
-# Online Auto Parts / Online Araç Yedek Parça
+# Online Spare Parts / Online Yedek Parça
 
 HTML, Javascript, Bootstrap, Bootstrap Tree View, PHP, PHP-Mailer
 
