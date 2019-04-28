@@ -12,8 +12,8 @@ $password = 'qwert12345-';
 
 use PHPMailer\PHPMailer\PHPMailer;
 
-require 'PHPMailer/src/PHPMailer.php';
-require 'PHPMailer/src/SMTP.php';
+require '../vendor/phpmailer/phpmailer/src/PHPMailer.php';
+require '../vendor/phpmailer/phpmailer/src/SMTP.php';
 
 
 $mail = new PHPMailer(true);
