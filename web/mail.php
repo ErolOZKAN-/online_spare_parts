@@ -8,7 +8,7 @@ $cart_keys = $_POST['cart_keys'];
 $content = "İsim:\t" . $name . "<br>" . "Email:\t" . $email . "<br>" . "Açıklama:\t" . $message . "<br>" . "Sepet Bilgisi:\t" . "<br>" . $cart_keys;
 
 $mail_address = 'online-parca@outlook.com';
-$password = '12345qwert-';
+$password = 'qwert12345-';
 
 use PHPMailer\PHPMailer\PHPMailer;
 
